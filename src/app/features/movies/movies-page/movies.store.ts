@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { Observable } from 'rxjs';
 import { Movie } from '../movie';
@@ -10,6 +11,7 @@ const initialState: MovieState = {
   movies: [],
 };
 
+@Injectable()
 export class MoviesStore extends ComponentStore<MovieState> {
   constructor() {
     super(initialState);

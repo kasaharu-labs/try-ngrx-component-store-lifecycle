@@ -1,6 +1,6 @@
 import { ComponentStore } from '@ngrx/component-store';
 import { Observable } from 'rxjs';
-import { Movie } from './movie';
+import { Movie } from '../movie';
 
 export interface MovieState {
   movies: Movie[];

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../movie.service';
 import { MoviesStore } from './movies.store';
 
 @Component({
@@ -11,8 +12,17 @@ import { MoviesStore } from './movies.store';
   `,
   providers: [MoviesStore],
 })
-export class MoviesPageComponent {
-  constructor(private readonly store: MoviesStore) {}
+export class MoviesPageComponent implements OnInit {
+  constructor(
+    private readonly store: MoviesStore,
+    private readonly service: MovieService
+  ) {}
 
   movies$ = this.store.movies$;
+
+  ngOnInit(): void {
+    this.service
+      .getMovie('#001')
+      .subscribe((movie) => this.store.addMovie(movie));
+  }
 }
